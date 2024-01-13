@@ -26,7 +26,7 @@ const Navbar = () => {
     <nav className="flex-between w-full mb-8 pt-3 h-10">
       <Link href="/" className="flex gap-2 flex-center">
         <Image
-          src="next.svg"
+          src="/next.svg"
           width={80}
           alt="logo"
           height={80}

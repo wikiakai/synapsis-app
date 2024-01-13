@@ -93,6 +93,11 @@
 .head_text {
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-black sm:text-6xl;
 }
+
+.subhead_text {
+  @apply mt-5 text-3xl font-extrabold leading-[1.15] text-black;
+}
+
 .head_text_blue {
   @apply mt-5 text-5xl font-extrabold leading-[1.15] text-cyan-500 sm:text-6xl;
 }
@@ -175,4 +180,8 @@
 
 .flex-between {
   @apply flex justify-between items-center;
+}
+
+.flex-wrap-item {
+  @apply flex-wrap;
 }
