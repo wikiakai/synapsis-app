@@ -1,4 +1,4 @@
-import PostDetail from '@/lib/postList/view/PostDetail'
+import PostDetail from '@/lib/posts/view/PostDetail'
 import React from 'react'
 interface Props {
   params: {
@@ -8,7 +8,7 @@ interface Props {
 const page = ({ params }: Props) => {
   const { postId } = params
   return (
-    <div className="flex flex-col flex-center gap-5">
+    <div>
       <PostDetail id={postId} />
     </div>
   )

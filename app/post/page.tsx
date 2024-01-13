@@ -1,4 +1,4 @@
-import PostList from '@/lib/postList/view/PostList'
+import PostList from '@/lib/posts/view/PostList'
 import { Suspense } from 'react'
 
 const page = () => {

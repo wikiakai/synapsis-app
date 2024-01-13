@@ -1,6 +1,6 @@
 'use client'
 
-import { IPost } from '@/lib/postList/types'
+import { IPost } from '@/lib/posts/types'
 import Link from 'next/link'
 
 interface PostCardProps {

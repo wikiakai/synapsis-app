@@ -47,7 +47,7 @@ const PostDetail = (props: PropsType) => {
   }, [])
 
   return (
-    <div className="flex flex-row gap-5">
+    <div className="flex flex-row gap-5 w-[100%]">
       <div className="flex flex-col">
         <p className="subhead_text">Detail posts</p>
         <PostCard post={dataPost} isDetail={true} />

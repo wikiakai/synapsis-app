@@ -1,4 +1,4 @@
-import { PostCommentsType } from '@/lib/postList/types'
+import { PostCommentsType } from '@/lib/posts/types'
 import React from 'react'
 
 interface CommentsCardProps {
