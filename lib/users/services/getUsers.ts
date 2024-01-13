@@ -1,17 +1,17 @@
-import { ListPost } from './../types/index'
+import { ListUserType } from './../types/index'
 
 import Axios from 'axios'
 
-export const getPosts = async (): Promise<ListPost> => {
+export const getUsers = async (): Promise<ListUserType> => {
   try {
-    const response = await Axios.get('https://gorest.co.in/public/v2/posts', {
+    const response = await Axios.get('https://gorest.co.in/public/v2/users', {
       headers: {
         Authorization:
           'Bearer b0244fa8dc9d4d136841b063c47f47dae1a17f2955a332a79e07de1948cb0e15',
       },
     })
 
-    const data: ListPost = response.data
+    const data: ListUserType = response.data
 
     return data
   } catch (error) {

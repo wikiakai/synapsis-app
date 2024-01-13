@@ -1,10 +1,13 @@
+import UserList from '@/lib/users/view/UserList'
 import React from 'react'
 
 function page() {
   return (
     <main>
-      <div className="flex-center">
-        <h1>Hello users</h1>
+      <div className="flex-center flex flex-col">
+        <p className="subhead_text">List Users</p>
+
+        <UserList />
       </div>
     </main>
   )

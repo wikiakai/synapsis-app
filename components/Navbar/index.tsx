@@ -5,23 +5,6 @@ import Image from 'next/image'
 // import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
-  const [nav, setNav] = useState(false)
-
-  const links = [
-    {
-      id: 1,
-      link: 'post',
-    },
-    {
-      id: 2,
-      link: 'post',
-    },
-    {
-      id: 2,
-      link: 'user',
-    },
-  ]
-
   return (
     <nav className="flex-between w-full mb-8 pt-3 h-10">
       <Link href="/" className="flex gap-2 flex-center">
