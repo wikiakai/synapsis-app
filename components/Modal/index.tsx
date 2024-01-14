@@ -28,17 +28,23 @@ const Modal = (props: ModalProps) => {
     }
   }, [open])
 
-  const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeForm = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    const val: string = e.target.value
+
     let updatedFormValue: IUserForm | null =
       formValue !== null
         ? formValue
         : { name: '', email: '', gender: '', status: '' }
-    const field = e.target.name
 
-    updatedFormValue[field] = e.target.value
+    const field: string = e.target.name
+
+    ;(updatedFormValue as any)[field] = val
     setFormValue({ ...updatedFormValue })
   }
-
   const handleCloseModal = async () => {
     setFormValue({ name: '', email: '', gender: '', status: '' })
     onClose()
