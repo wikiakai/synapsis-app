@@ -1,5 +1,5 @@
 'use client'
-import { editUser, createUser } from '@/lib/users/services'
+import { editUser, createUser, deleteUser } from '@/lib/users/services'
 import { IUserForm } from '@/lib/users/types'
 import React, { useEffect, useState } from 'react'
 interface ModalProps {
@@ -83,6 +83,20 @@ const Modal = (props: ModalProps) => {
     }
   }
 
+  const handleRequestDelete = async () => {
+    setLoading(true)
+    const id = user?.id || 0
+    const res: any = await deleteUser(id)
+    if (res.status === 204) {
+      alert('Delete User Success!')
+    } else {
+      const msg = `${res.response.data[0].field} ${res.response.data[0].message}`
+      alert(msg)
+    }
+    setLoading(false)
+    onClose()
+  }
+
   return (
     <div>
       {open ? (
@@ -107,72 +121,78 @@ const Modal = (props: ModalProps) => {
                 </div>
                 {/*body*/}
                 <div className="relative px-2  flex-auto ">
-                  <form className="p-4 md:p-5">
-                    <div className="flex flex-col gap-5">
-                      <div className="">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Name
-                        </label>
-                        <input
-                          type="text"
-                          name="name"
-                          id="name"
-                          value={formValue !== null ? formValue.name : ''}
-                          className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                          placeholder="Type name"
-                          onChange={(e) => handleChangeForm(e)}
-                        />
-                      </div>
-
-                      <div className="">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          name="email"
-                          id="name"
-                          value={formValue !== null ? formValue.email : ''}
-                          className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                          onChange={(e) => handleChangeForm(e)}
-                          placeholder="Type email"
-                        />
-                      </div>
-                      <div className="col-span-2">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Gender
-                        </label>
-                        <select
-                          id="gender"
-                          name="gender"
-                          onChange={(e) => handleChangeForm(e)}
-                          value={formValue !== null ? formValue.gender : ''}
-                          className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                        >
-                          <option>Select gender</option>
-                          <option value="male">Male</option>
-                          <option value="female">Female</option>
-                        </select>
-                      </div>
-                      <div className="col-span-2">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 ">
-                          Status
-                        </label>
-                        <select
-                          id="status"
-                          name="status"
-                          onChange={(e) => handleChangeForm(e)}
-                          value={formValue !== null ? formValue.status : ''}
-                          className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
-                        >
-                          <option>Select status</option>
-                          <option value="active">Active</option>
-                          <option value="inactive">Inactive</option>
-                        </select>
-                      </div>
-                      <div className="col-span-2"></div>
+                  {content === 'delete' ? (
+                    <div className="p-4 md:p-5">
+                      <p>Yakin ingin menghapus user {user?.name}?</p>
                     </div>
-                  </form>
+                  ) : (
+                    <form className="p-4 md:p-5">
+                      <div className="flex flex-col gap-5">
+                        <div className="">
+                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                            Name
+                          </label>
+                          <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            value={formValue !== null ? formValue.name : ''}
+                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                            placeholder="Type name"
+                            onChange={(e) => handleChangeForm(e)}
+                          />
+                        </div>
+
+                        <div className="">
+                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                            Email
+                          </label>
+                          <input
+                            type="email"
+                            name="email"
+                            id="name"
+                            value={formValue !== null ? formValue.email : ''}
+                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                            onChange={(e) => handleChangeForm(e)}
+                            placeholder="Type email"
+                          />
+                        </div>
+                        <div className="col-span-2">
+                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                            Gender
+                          </label>
+                          <select
+                            id="gender"
+                            name="gender"
+                            onChange={(e) => handleChangeForm(e)}
+                            value={formValue !== null ? formValue.gender : ''}
+                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                          >
+                            <option>Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                          </select>
+                        </div>
+                        <div className="col-span-2">
+                          <label className="block mb-2 text-sm font-medium text-gray-900 ">
+                            Status
+                          </label>
+                          <select
+                            id="status"
+                            name="status"
+                            onChange={(e) => handleChangeForm(e)}
+                            value={formValue !== null ? formValue.status : ''}
+                            className=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 "
+                          >
+                            <option>Select status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                          </select>
+                        </div>
+                        <div className="col-span-2"></div>
+                      </div>
+                    </form>
+                  )}
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -187,11 +207,14 @@ const Modal = (props: ModalProps) => {
                     className="blue_btn"
                     type="button"
                     onClick={() =>
-                      content === 'add' ? handleRequest() : handleRequestEdit()
+                      content === 'add'
+                        ? handleRequest()
+                        : content === 'edit'
+                        ? handleRequestEdit()
+                        : handleRequestDelete()
                     }
-                    // disabled={disabledButton}
                   >
-                    Save Changes
+                    {content === 'delete' ? 'Yes' : 'Send Request'}
                   </button>
                 </div>
               </div>

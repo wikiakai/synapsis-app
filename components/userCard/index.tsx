@@ -37,7 +37,12 @@ const UserCard = (props: UserCardProps) => {
         <button className="blue_btn" onClick={() => onOpenModal('edit', user)}>
           Edit
         </button>
-        <button className="outline_red_btn">Delete</button>
+        <button
+          className="outline_red_btn"
+          onClick={() => onOpenModal('delete', user)}
+        >
+          Delete
+        </button>
       </div>
     </div>
   )
