@@ -46,15 +46,24 @@ const PostDetail = (props: PropsType) => {
     }
   }, [])
 
+  console.log(dataComments)
   return (
-    <div className="flex flex-row flex-wrap-item gap-2 w-full">
-      <div className="flex flex-col">
+    <div className="flex flex-row flex-wrap-item gap-5 w-full">
+      <div className="flex flex-col gap-3">
         <p className="subhead_text">Detail posts</p>
         <PostCard post={dataPost} isDetail={true} />
       </div>
-      <div className="flex flex-col">
-        <p className="subhead_text">Comments</p>
-        <CommentsCard data={dataComments} />
+      <div className="flex flex-col gap-3 w-full">
+        {dataComments.length === 0 ? (
+          <>
+            <p className="italic font-semibold">No comment yet...</p>
+          </>
+        ) : (
+          <>
+            <p className="subhead_text">Comments</p>
+            <CommentsCard data={dataComments} />
+          </>
+        )}
       </div>
     </div>
   )

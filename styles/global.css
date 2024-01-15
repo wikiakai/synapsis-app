@@ -79,7 +79,7 @@
 /* Tailwind Styles */
 
 .app {
-  @apply relative z-10 flex justify-center items-center flex-col max-w-7xl mx-auto sm:px-16 px-6;
+  @apply relative z-10 flex  flex-col max-w-7xl mx-auto sm:px-16 px-6;
 }
 
 .blue_btn {
@@ -87,7 +87,11 @@
 }
 
 .outline_red_btn {
-  @apply rounded-full border bg-red-200  py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-red-500  py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+}
+
+.outline_blue_btn {
+  @apply rounded-full border border-blue-500  py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {

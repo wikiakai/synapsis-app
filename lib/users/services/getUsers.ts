@@ -2,10 +2,13 @@ import { ListUserType } from './../types/index'
 
 import Axios from 'axios'
 
-export const getUsers = async (): Promise<ListUserType> => {
+export const getUsers = async (
+  limit: number,
+  page: number
+): Promise<ListUserType> => {
   try {
     const response = await Axios.get(
-      'https://gorest.co.in/public/v2/users?page=1&per_page=20',
+      `https://gorest.co.in/public/v2/users?page=${page}&per_page=${limit}`,
       {
         headers: {
           Authorization:

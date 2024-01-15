@@ -14,8 +14,8 @@ const PostCard = (props: PostCardProps) => {
   return (
     <div
       className={`${
-        isDetail ? 'w-[470px]' : 'w-[270px]'
-      } rounded overflow-hidden shadow-lg`}
+        isDetail ? 'w-full' : 'w-[270px] h-[250px]'
+      } rounded overflow-hidden shadow-lg justify-between flex flex-col`}
     >
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{post.title}</div>

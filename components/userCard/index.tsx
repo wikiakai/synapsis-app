@@ -21,6 +21,7 @@ const UserCard = (props: UserCardProps) => {
           {user.email}
         </span>
       </div>
+      
       <div className="pt-4">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
           {user.gender}
