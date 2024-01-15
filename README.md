@@ -2,7 +2,7 @@
 
 > This project was made for recruitment test in Synapsis.id
 
-> Live Demo https://synapsis-app.vercel.app/ :)
+> Live Demo https://synapsis-app-wikiakai.vercel.app/ :)
 
 ![screenshot](ss.png)
 
