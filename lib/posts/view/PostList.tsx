@@ -20,7 +20,7 @@ const PostList = () => {
     }
 
     getDataPost()
-  }, [])
+  }, [limit, page])
 
   return (
     <div className="flex flex-row flex-center flex-wrap-item gap-2 w-full">
